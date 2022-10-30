@@ -28,4 +28,8 @@ Examining results:
 table(mismatches)
 
 hist(table(mismatches))
+
+mean(table(mismatches))
 ```
+
+Coming soon: a snakemake pipeline to automate my entire genotyping process
