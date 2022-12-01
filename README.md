@@ -3,7 +3,7 @@ An R function to find the genotyping accuracy at a locus using replicate samples
 
 This function takes two pieces of input:
 
-1. A data frame of genotypes, with one allele per column, and replicate individuals placed in consecutive rows, like this...
+1. A data frame of genotypes, with one allele per column, sample names are row names and not their own column, and replicate individuals placed in consecutive rows, like this...
 ```
                Locus1.a1      Locus1.a2      Locus2.a1      Locus2.a2
 indiv1                 A              C              A              C
@@ -31,5 +31,9 @@ hist(table(mismatches))
 
 mean(table(mismatches))
 ```
+
+There is another version of the loc_gen_acc function called loc_gen_acc2 that only takes the genotypes as input and compares identical sample names. This is what I use to assess the genotyping accuracy between different SNP callers. Just concatenate the genotype dataframes from each caller, making sure that both data sets contain loci identified by both callers, in the same order, and the function will find like sample names and find the number of mismatches between them.
+
+loc_gen_acc2 has the same 2 assumptions as loc_gen_acc.
 
 Coming soon: a snakemake pipeline to automate my entire genotyping process
